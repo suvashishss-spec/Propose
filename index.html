@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For Probha 💖</title>
+  <meta name="description" content="A proposal letter 💖" />
+  <style>
+    :root{
+      --bg1:#0f1020;
+      --bg2:#1a0f1f;
+      --card:#ffffff10;
+      --card2:#ffffff14;
+      --text:#fff;
+      --muted:#ffffffb3;
+      --accent:#ff4d88;
+      --accent2:#ffb3c7;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 22px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      overflow-x:hidden;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, #2a1b3d 0%, transparent 55%),
+        radial-gradient(900px 700px at 80% 30%, #3a1030 0%, transparent 55%),
+        linear-gradient(140deg, var(--bg1), var(--bg2));
+    }
+
+    /* floating hearts */
+    .hearts{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:0;
+    }
+    .heart{
+      position:absolute;
+      bottom:-40px;
+      width:18px;
+      height:18px;
+      transform:rotate(45deg);
+      opacity:.55;
+      animation: floatUp linear infinite;
+      filter: drop-shadow(0 10px 12px rgba(255,77,136,.25));
+    }
+    .heart::before,
+    .heart::after{
+      content:"";
+      position:absolute;
+      width:18px;
+      height:18px;
+      background: radial-gradient(circle at 30% 30%, var(--accent2), var(--accent));
+      border-radius:50%;
+    }
+    .heart::before{ left:-9px; }
+    .heart::after{ top:-9px; }
+    @keyframes floatUp{
+      from{ transform: translateY(0) rotate(45deg); }
+      to{ transform: translateY(-115vh) rotate(45deg); }
+    }
+
+    .wrap{
+      position:relative;
+      z-index:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px 16px 40px;
+      min-height:100vh;
+    }
+
+    .card{
+      width:min(720px, 100%);
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      overflow:hidden;
+    }
+
+    .topbar{
+      padding:22px 22px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+      font-weight:650;
+      letter-spacing:.2px;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 18px rgba(255,77,136,.6);
+    }
+
+    .meta{
+      text-align:right;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.2;
+      white-space:nowrap;
+    }
+
+    .content{
+      padding:26px 22px 18px;
+    }
+
+    h1{
+      margin:0 0 10px 0;
+      font-size:28px;
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin:0 0 18px 0;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    /* Optional photo */
+    .photo{
+      margin: 6px 0 16px;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 16px 35px rgba(0,0,0,.22);
+    }
+    .photo img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    .photo .cap{
+      padding:10px 12px;
+      font-size:13px;
+      color:var(--muted);
+      border-top:1px solid rgba(255,255,255,.12);
+    }
+
+    .letter{
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding:18px 16px;
+      line-height:1.55;
+      font-size:16px;
+    }
+    .letter p{ margin:0 0 14px 0; }
+    .letter p:last-child{ margin-bottom:0; }
+
+    .sig{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .cta{
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:flex-start;
+    }
+
+    button{
+      appearance:none;
+      border:0;
+      border-radius: 999px;
+      padding:12px 16px;
+      font-weight:800;
+      cursor:pointer;
+      transition: transform .12s ease, filter .12s ease, background .12s ease;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* YES: glow + pulse */
+    .yes{
+      background: linear-gradient(180deg, #ff5a93, #ff2e78);
+      color:white;
+      box-shadow:
+        0 18px 38px rgba(255,77,136,.28),
+        0 0 0 rgba(255,77,136,0);
+      animation: yesPulse 1.35s ease-in-out infinite;
+      position: relative;
+    }
+    .yes::after{
+      content:"";
+      position:absolute;
+      inset:-8px;
+      border-radius:999px;
+      background: radial-gradient(circle, rgba(255,179,199,.35), transparent 60%);
+      opacity:.6;
+      filter: blur(6px);
+      z-index:-1;
+    }
+    @keyframes yesPulse{
+      0%   { transform: translateY(0) scale(1);   box-shadow: 0 18px 38px rgba(255,77,136,.22), 0 0 0 0 rgba(255,77,136,.0); }
+      50%  { transform: translateY(-1px) scale(1.04); box-shadow: 0 22px 44px rgba(255,77,136,.35), 0 0 28px 6px rgba(255,77,136,.22); }
+      100% { transform: translateY(0) scale(1);   box-shadow: 0 18px 38px rgba(255,77,136,.22), 0 0 0 0 rgba(255,77,136,.0); }
+    }
+    .yes:hover{ filter: brightness(1.03); }
+
+    .no{
+      background: rgba(255,255,255,.10);
+      color: white;
+      border: 1px solid rgba(255,255,255,.16);
+      font-weight:750;
+    }
+    .no:hover{ transform: translateY(-1px); filter: brightness(1.06); }
+
+    .popup{
+      display:none;
+      padding:18px 16px;
+      margin-top:14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+      animation: pop .25s ease both;
+    }
+    @keyframes pop{
+      from{ transform: translateY(6px); opacity:0; }
+      to{ transform: translateY(0); opacity:1; }
+    }
+    .popup h2{
+      margin:0 0 6px 0;
+      font-size:18px;
+    }
+    .popup p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.45;
+    }
+
+    .footer{
+      padding:14px 22px 18px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      color:var(--muted);
+      font-size:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .tiny{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .linkbtn{
+      background: rgba(255,255,255,.10);
+      color: white;
+      border: 1px solid rgba(255,255,255,.16);
+      padding:9px 12px;
+      font-weight:650;
+      font-size:12px;
+    }
+
+    /* Heart cursor effect */
+    .cursor-heart {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      pointer-events: none;
+      transform: rotate(45deg);
+      animation: cursorPop 0.9s ease-out forwards;
+      z-index: 9999;
+    }
+    .cursor-heart::before,
+    .cursor-heart::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: linear-gradient(180deg, #ff6fa5, #ff2e78);
+      border-radius: 50%;
+    }
+    .cursor-heart::before { left: -6px; }
+    .cursor-heart::after { top: -6px; }
+
+    @keyframes cursorPop {
+      from { opacity: 1; transform: scale(1) rotate(45deg); }
+      to { opacity: 0; transform: scale(1.8) rotate(45deg); }
+    }
+
+    /* reduce motion for accessibility */
+    @media (prefers-reduced-motion: reduce){
+      .yes{ animation:none; }
+      .heart{ animation-duration: 999s; }
+      .cursor-heart{ display:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hearts" aria-hidden="true" id="hearts"></div>
+
+  <main class="wrap">
+    <section class="card" role="article" aria-label="Proposal letter">
+      <div class="topbar">
+        <div class="badge"><span class="dot"></span>Propose Day 💖</div>
+        <div class="meta">
+          <div id="today"></div>
+          <div>From Oct 18, 2025</div>
+        </div>
+      </div>
+
+      <div class="content">
+        <h1>Meri jaan Probha,</h1>
+        <p class="sub">I made this little page just for you.</p>
+
+        <!-- ✅ OPTIONAL PHOTO: Put probha.jpg in the same folder as index.html (or change src to a URL) -->
+        <div class="photo" id="photoWrap">
+          <img src="probha.jpg" alt="Us 💖" />
+          <div class="cap">Us, always 💖</div>
+        </div>
+
+        <div class="letter" id="letter">
+          <p>
+            From October 18th 2025, my life quietly changed in the best way possible.
+            Somewhere between our laughs, our long talks, the distance, the late nights,
+            and the little moments only we know you became my safe place, my happiness,
+            and my favourite person.
+          </p>
+
+          <p>
+            You make ordinary days feel special and hard days feel lighter.
+            Loving you feels natural, calm, and exciting all at once, and I wouldn’t trade that for anything.
+          </p>
+
+          <p>
+            So today on Propose Day, I want to ask you something from my heart:
+            <strong>Will you be mine, not just today, but every day?</strong><br/>
+            My girlfriend, my partner, my wife, mother of my kids, my best friend, my princess, my baby and my forever person?
+          </p>
+
+          <p>
+            I love you always and forever and ever and ever and ever......💖💖💖💖
+          </p>
+
+          <div class="sig">— Yours, always 💗</div>
+        </div>
+
+        <div class="cta">
+          <button class="yes" id="yesBtn">Yes 💍</button>
+          <button class="no" id="noBtn">No 🙈</button>
+        </div>
+
+        <div class="popup" id="popup" aria-live="polite">
+          <h2>YAYYYYY!! 😭💖</h2>
+          <p>
+            I’m the luckiest. Screenshot this and send it to me, meri jaan 🥺✨
+          </p>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="tiny">
+          <button class="linkbtn" id="copyBtn">Copy page link</button>
+          <span id="copyStatus"></span>
+        </div>
+        <div>For Probha 💖</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Set date
+    const d = new Date();
+    const fmt = d.toLocaleDateString(undefined, { year:'numeric', month:'long', day:'numeric' });
+    document.getElementById('today').textContent = fmt;
+
+    // Hearts generator (background)
+    const hearts = document.getElementById('hearts');
+    const heartCount = 24;
+    for (let i=0;i<heartCount;i++){
+      const h = document.createElement('div');
+      h.className = 'heart';
+      const left = Math.random()*100;
+      const size = 10 + Math.random()*18;
+      const dur = 7 + Math.random()*10;
+      const delay = Math.random()*-dur; // start at different points
+      h.style.left = left + 'vw';
+      h.style.width = size + 'px';
+      h.style.height = size + 'px';
+      h.style.animationDuration = dur + 's';
+      h.style.animationDelay = delay + 's';
+      hearts.appendChild(h);
+    }
+
+    // If image fails to load, hide the photo block (so it doesn't look broken)
+    const photoWrap = document.getElementById('photoWrap');
+    const img = photoWrap.querySelector('img');
+    img.addEventListener('error', () => {
+      photoWrap.style.display = 'none';
+    });
+
+    // Buttons
+    const popup = document.getElementById('popup');
+    document.getElementById('yesBtn').addEventListener('click', () => {
+      popup.style.display = 'block';
+
+      // little heart burst
+      for (let i=0;i<10;i++){
+        const b = document.createElement('div');
+        b.className='heart';
+        b.style.left = (45 + Math.random()*10) + 'vw';
+        const s = 10 + Math.random()*12;
+        b.style.width = s+'px';
+        b.style.height = s+'px';
+        b.style.opacity = '.9';
+        b.style.animationDuration = (4 + Math.random()*3) + 's';
+        hearts.appendChild(b);
+        setTimeout(()=> b.remove(), 7000);
+      }
+
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    });
+
+    // Playful "No" button dodge
+    const noBtn = document.getElementById('noBtn');
+    noBtn.addEventListener('mouseenter', dodge);
+    noBtn.addEventListener('click', dodge);
+    function dodge(){
+      const card = document.querySelector('.card');
+      const rect = card.getBoundingClientRect();
+      const maxX = Math.max(0, rect.width - noBtn.offsetWidth - 30);
+      const maxY = Math.max(0, 120);
+      const x = Math.random()*maxX;
+      const y = Math.random()*maxY;
+      noBtn.style.position = 'relative';
+      noBtn.style.left = (x - maxX/2) + 'px';
+      noBtn.style.top  = (y - maxY/2) + 'px';
+    }
+
+    // Copy link button (works once hosted)
+    const copyBtn = document.getElementById('copyBtn');
+    const copyStatus = document.getElementById('copyStatus');
+    copyBtn.addEventListener('click', async () => {
+      try{
+        await navigator.clipboard.writeText(window.location.href);
+        copyStatus.textContent = 'Copied! ✅';
+        setTimeout(()=>copyStatus.textContent='', 1500);
+      }catch(e){
+        copyStatus.textContent = 'Copy failed — long-press the URL bar to copy.';
+        setTimeout(()=>copyStatus.textContent='', 2500);
+      }
+    });
+
+    // Heart cursor trail (desktop + mobile taps)
+    function spawnCursorHeart(x, y){
+      const heart = document.createElement("div");
+      heart.className = "cursor-heart";
+      heart.style.left = x + "px";
+      heart.style.top = y + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 900);
+    }
+
+    document.addEventListener("mousemove", (e) => {
+      spawnCursorHeart(e.clientX, e.clientY);
+    });
+
+    document.addEventListener("touchstart", (e) => {
+      const t = e.touches[0];
+      if (t) spawnCursorHeart(t.clientX, t.clientY);
+    }, { passive: true });
+  </script>
+</body>
+</html>
